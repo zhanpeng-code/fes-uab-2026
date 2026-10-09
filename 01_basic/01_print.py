@@ -6,7 +6,7 @@
 ###
 
 # Aquest és un exemple bàsic de com imprimir un text a la consola
-# print("Hola, món!")
+# print("¡Hola, Mundo!")
 
 # També pots utilitzar cometes simples per imprimir text
 # print('Això també funciona amb una cometa')
@@ -35,4 +35,4 @@ print(42)
 # print("Això és una \"polzada\" dins d'una cadena amb cometes dobles")
 
 # # ✅ Solució 3: Utilitzar cometes triples per definir la cadena
-# print("""Això és una "polzada" dins d'una cadena amb cometes triples""")
+print(""""Això és una "polzada" dins d'una cadena amb cometes triples"""")

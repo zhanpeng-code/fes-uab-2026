@@ -7,7 +7,7 @@ print("\nExercici 1: Imprimir missatges")
 print("Escriu un programa que imprimeixi el teu nom i la teva ciutat en línies separades.")
 
 ### Completa aquí
-
+print("Zhanpeng Xia: Badalona")
 print("--------------")
 
 print("\nExercici 2: Mostra els tipus de dades de les variables següents:")
@@ -19,7 +19,11 @@ d = True
 e = None
 
 ### Completa aquí
-
+print(type(a))
+print(type(b))
+print(type(c))
+print(type(d))
+print(type(e))
 print("--------------")
 
 print("\nExercici 3: Conversió de tipus")
@@ -27,19 +31,22 @@ print("Converteix la cadena \"12345\" a un enter i després a un float.")
 print("Converteix el float 3.99 a un enter. Què passa?")
 
 ### Completa aquí
+cadena="12345"
+print(int(cadena))
+print(float(cadena))
 
+print(int(3.99))
 print("--------------")
 
 print("\nExercici 4: Variables")
 print("Crea variables per al teu nom, edat i alçada.")
 print("Utilitza f-strings per imprimir una presentació.")
 
-# "Hola! Em dic Marc, tinc 40 anys i faig 1.75 metres"
-#name = "Marc"
-#age = 40
-
 ### Completa aquí
-
+nom= "Zhanpeng"
+edad=19
+alçada=1.88
+print(f"Hola! Em dic {nom}, tinc {edad} anys i faig {alçada} metres")
 print("--------------")
 
 print("\nExercici 5: Nombres")
@@ -48,6 +55,9 @@ print("2. Arrodoneix el nombre amb round()")
 print("3. Fes la divisió entera entre el nombre resultant i el nombre 2")
 print("4. El resultat hauria de ser 1")
 
+### Completa aquí
+print(round(3.1415926535897932384626))
+print(int(round(3.1415926535897932384626)/2))
 print("--------------")
 
 print("\nExercici 6: Conversor de temperatura")

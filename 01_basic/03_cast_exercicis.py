@@ -13,4 +13,4 @@ print("El valor total del paquets és:", paquets + 1200)
 # introduït a un nombre decimal i calcula la velocitat equivalent en MB/s
 # dividint-la per 8. Mostra el resultat.
 mbps = float(input("Introdueix la velocitat en Mbps: "))
-print(f"La velocitat en {mbps} Mbps és", mbps / 8)
+print(f"La velocitat en {mbps} Mbps és", mbps / 8, "MB/s")

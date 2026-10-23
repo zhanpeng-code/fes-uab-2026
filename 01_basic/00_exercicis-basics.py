@@ -92,6 +92,6 @@ print("Mostra 'Contrasenya vàlida' o 'Contrasenya no vàlida'.")
 ### Completa aquí
 contraseña = str(input("Introdueix una contrasenya de 8 caràcters: "))
 if len(contraseña) >= 8:
-	print("Contrasenya vàlida")
+	print("Contrasenya vàlida.")
 else:
-	print("Contrasenya no vàlida")
+	print("Contrasenya no vàlida.")

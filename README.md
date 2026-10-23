@@ -1,87 +1,63 @@
-# Fonaments d'Enginyeria de Software
-Repositori per l'assignatura de FES de la UAB curs acadèmic 2026/2027
+# Fonaments d'Enginyeria de Software amb Python
 
-## Índex
+Materials docents de l'assignatura **Fonaments d'Enginyeria de Software (FES)** de la Universitat Autònoma de Barcelona (**UAB**), curs acadèmic **2026–2027** (Graus d'Enginyeria d'Electrònica de Telecomunicacions i de Sistemes de Telecomunicacions).
 
-1. Entendre com funciona un programa.
-2. Representar problemes mitjançant algoritmes.
-3. Utilitzar estructures de control per prendre decisions i repetir processos.
-4. Organitzar el codi de manera estructurada i modular.
-5. Comprendre la relació entre software i hardware.
-6. Treballar amb dades i persistència.
-7. Aplicar la programació a sistemes, xarxes i telecomunicacions.
-8. Desenvolupar solucions cada vegada més completes.
+---
 
-## Contingut del repositori
+## Estructura i convenció de fitxers
 
-En aquest repositori hi haurà principalment codi escrit en **Python**, que servirà
-per comprendre millor els conceptes de l'assignatura de Fonaments d'Enginyeria de
-Software mitjançant exemples pràctics.
+Els continguts s'organitzen en carpetes temàtiques numerades seguint una progressió lògica d'aprenentatge. Per a cada tema es troba:
 
-### Exemple bàsic
+- `NN_tema.py`: Explicacions i exemples de codi executables.
+- `NN_tema.ipynb`: Versió interactiva en format Jupyter Notebook.
+- `NN_tema_exercicis.py`: Enunciats d'exercicis pràctics.
+- `NN_tema_solucions.py`: Propostes de resolució dels exercicis.
 
-El fitxer [`exemple.py`](exemple.py) conté un primer programa en Python que mostra
-un missatge per pantalla amb la funció `print()`.
+---
 
-### Notebook de Jupyter
+## Ruta d'aprenentatge
 
-El fitxer [`explicacio_exemple.ipynb`](explicacio_exemple.ipynb) es pot obrir amb
-Jupyter Notebook o amb VS Code i l'extensió de Jupyter. Inclou explicacions
-pas a pas de cada línia de l'exemple i cel·les de Python que es poden executar.
+| Bloc | Carpeta / Fitxers | Continguts principals |
+|---|---|---|
+| **00. Introducció** | [`00_exemple.py`](00_exemple.py)<br>[`00_explicacio_exemple.ipynb`](00_explicacio_exemple.ipynb) | Primer programa en Python i sortida per consola. |
+| **01. Conceptes bàsics** | [`01_basic/`](01_basic/) | Sortida (`print`), tipus de dades (`types`), conversions (`cast`), variables i entrada d'usuari (`input`). Inclou recopilatori d'exercicis bàsics. |
+| **02. Condicionals** | [`02_condicional_if/`](02_condicional_if/) | Estructures de control `if`, `elif`, `else` i operadors booleans (`and`, `or`, `not`). |
+| **03. Llistes** | [`03_llistes/`](03_llistes/) | Creació, indexació, slicing i mètodes de llista (`append`, `insert`, `remove`, `pop`, `sort`, etc.). |
+| **04. Bucles** | [`04_bucles/`](04_bucles/) | Bucles `while`, `for`, `break`, `continue` i generació de seqüències amb `range()`. |
+| **05. Funcions** | [`05_funcions/`](05_funcions/) | Definició de funcions (`def`), paràmetres, arguments i retorn de valors (`return`). |
+| **06. Diccionaris** | [`06_diccionaris/`](06_diccionaris/) | Estructures clau-valor (`dict`), accés, mètodes i iteració. |
+| **07. Tuples** | [`07_tuples/`](07_tuples/) | Seqüències immutables (`tuple`), accés, propietats i comparativa amb llistes. |
 
-### 01 - Conceptes bàsics de Python
+---
 
-La carpeta [`01_basic`](01_basic/) conté els primers exemples pràctics de
-Python:
+## Execució del codi
 
-- [`01_print.py`](01_basic/01_print.py): mostrar informació per pantalla amb `print()`.
-- [`02_types.py`](01_basic/02_types.py): conèixer els principals tipus de dades.
-- [`03_cast.py`](01_basic/03_cast.py): convertir valors entre diferents tipus.
-- [`04_variables.py`](01_basic/04_variables.py): crear i modificar variables, utilitzar f-strings i seguir convencions de noms.
-- [`05_input.py`](01_basic/05_input.py): llegir dades de l'usuari amb `input()` i convertir-les a nombres.
+### Scripts de Python (`.py`)
 
-També inclou [`exercicis-basics.py`](01_basic/exercicis-basics.py), amb vuit exercicis
-per practicar aquests conceptes, i [`soluciones.py`](01_basic/soluciones.py),
-amb una possible solució per a cadascun.
+Executa qualsevol fitxer des de l'arrel del repositori:
 
-### Executar un fitxer Python des del terminal
+```bash
+# Windows
+py ./01_basic/01_print.py
 
-1. Obre un terminal a la carpeta principal del repositori.
-2. Comprova que Python està instal·lat:
+# Linux / macOS
+python3 ./01_basic/01_print.py
+```
 
-	```powershell
-	python --version
-	```
+### Notebooks interactius (`.ipynb`)
 
-	Si aquesta comanda no funciona a Windows, prova `py --version`.
+Els fitxers `.ipynb` es poden obrir directament a **VS Code** (recomanat, amb l'extensió oficial de Jupyter) o bé executant Jupyter Notebook al terminal:
 
-3. Entra a la carpeta dels conceptes bàsics:
+```bash
+jupyter notebook
+```
 
-	```powershell
-	cd 01_basic
-	```
+---
 
-4. Executa el fitxer que vulguis. Per exemple:
+## Metodologia de treball recomanada
 
-	```powershell
-	python 01_print.py
-	```
-
-5. Per executar un altre exemple, substitueix el nom del fitxer:
-
-	```powershell
-	python 02_types.py
-	python 03_cast.py
-	python 04_variables.py
-	python 05_input.py
-	```
-
-	El fitxer `05_input.py` demana dades per teclat. Escriu la resposta i prem
-	`Enter`.
-
-6. Per tornar a la carpeta principal del repositori, executa:
-
-	```powershell
-	cd ..
-	```
+1. **Explorar**: Llegeix i executa el fitxer d'exemples (`.py` o `.ipynb`).
+2. **Experimentar**: Modifica valors i prediu el comportament abans d'executar.
+3. **Practicar**: Resol el fitxer `_exercicis.py` de manera autònoma.
+4. **Validar**: Compara el teu resultat amb `_solucions.py` i analitza possibles alternatives.
 

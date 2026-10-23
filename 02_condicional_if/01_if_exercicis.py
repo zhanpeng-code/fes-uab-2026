@@ -5,16 +5,38 @@
 # Exercici 1: Determinar el més gran de dos nombres
 # Demana a l'usuari que introdueixi dos nombres i mostra un missatge
 # que indiqui quin és més gran o si són iguals.
-
+a, b = input("Introdueix 2 nombres:").split()
+if a < b:
+    print(f"{a} és més gran que {b}")
+elif a>b:
+    print(f"{b} és més gran que {a}")
+else:
+    print(f"{b} és igual que {a}")
 # Exercici 2: Calculadora senzilla
 # Demana a l'usuari dos nombres i una operació (+, -, *, /).
 # Fes l'operació i mostra'n el resultat (gestiona la divisió per zero).
-
+a, b, c = input("Introdueix un nombre, un operador i un altre nombre: ").split()
+a = float(a)
+c = float(c)
+if c == 0 and b == "/":
+    print("Aquesta operació no és pot fer")
+elif b == "+":
+    print(f"{a} {b} {c} =", a+c)
+elif b == "-":
+    print(f"{a} {b} {c} =", a-c)
+elif b == "*":
+    print(f"{a} {b} {c} =", a*c)
+elif b == "/":
+    print(f"{a} {b} {c} =", a/c)
 # Exercici 3: Any de traspàs
 # Demana a l'usuari que introdueixi un any i determina si és de traspàs.
 # Un any és de traspàs si és divisible per 4, excepte si és divisible per 100
 # però no per 400.
-
+any_de_traspàs = int(input("Introdueix un any: "))
+if (any_de_traspàs % 400) == 0 or (any_de_traspàs % 4) == 0 and not((any_de_traspàs % 100) == 0):
+    print(f"L'any {any_de_traspàs} és l'any de traspàs")
+else:
+    print(f"L'any {any_de_traspàs} no és l'any de traspàs")
 # Exercici 4: Classificar edats
 # Demana a l'usuari que introdueixi una edat i classifica-la en:
 # - Nadó (0-2 anys)

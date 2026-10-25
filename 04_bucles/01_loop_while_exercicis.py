@@ -4,16 +4,43 @@
 
 # Exercici 1: Compte enrere
 # Imprimeix els números del 10 a l'1 fent servir un bucle while.
-
+a = 10
+b = 0
+while a > 0:
+    b += a
+    a -= 1
+print(b)
 # Exercici 2: Suma de números parells (while)
 # Calcula la suma dels números parells entre 1 i 20 (inclosos) fent servir un bucle while.
+a = 0
+b = 0
+while a < 20:
+    a += 1
 
+    if a % 2 != 0:
+        continue
+
+    b += a
+print(b)
 # Exercici 3: Factorial d'un número
 # Demana a l'usuari que introdueixi un número enter positiu.
 # Calcula el seu factorial fent servir un bucle while.
 # El factorial d'un número enter positiu és el producte de tots els números de l'1 fins a aquest número. Per exemple, el factorial de 5
 # 5! = 5 x 4 x 3 x 2 x 1 = 120.
-
+numero = -1
+while numero < 0:
+    try:
+        numero = int(input("Escriu un número positiu: "))
+        if numero < 0:
+            print("El número ha de ser positiu. Torna-ho a provar.")
+    except:
+        print("El que introdueixes ha de ser un número")
+comptador = 1
+if numero > 0:
+    while numero > 0:
+        comptador *= numero
+        numero -= 1
+print(f"El factorial de {numero} és {comptador}")
 # Exercici 4: Validació de contrasenya
 # Demana a l'usuari que introdueixi una contrasenya.
 # La contrasenya ha de tenir almenys 8 caràcters.

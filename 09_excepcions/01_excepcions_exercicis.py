@@ -2,6 +2,9 @@
 # EXERCICIS (excepcions)
 # Tots els textos d'entrada es proporcionen per evitar entrada interactiva.
 ###
+import math
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 # Exercici 1 - Bàsic. Conversió segura de tensions
 # Per a cada text de tensions, intenta convertir-lo amb float.
@@ -11,6 +14,13 @@
 # Cas límit: '0' és una mesura vàlida.
 tensions = ["3.3", "avaria", "0"]
 # TODO: escriu el bucle i el tractament de ValueError.
+for text in tensions:
+    try:
+        tension = float(text)
+    except ValueError:
+        print("Tensió incorrecte")
+    else:
+        print(tension)
 
 # Exercici 2 - Bàsic. Humitat amb contracte
 # Defineix validar_humitat(text) que retorni un float finit dins [0, 100].
@@ -21,6 +31,20 @@ tensions = ["3.3", "avaria", "0"]
 # La resta han de produir ValueError, gestionat en les demostracions.
 entrades_humitat = ["0", "100", "45.5", "-1", "101", "nan", "inf", "error"]
 # TODO: defineix la funció i mostra resultats o un missatge de rebuig.
+# import math
+def validar_humitat(text):
+    humitat = float(text)
+    if not math.isfinite(humitat):
+        raise ValueError("La humitat ha de ser finita.")
+    if humitat < 0 or humitat > 100:
+        raise ValueError("La humitat ha de estar entre o i 100")
+    return humitat
+
+for text in entrades_humitat:
+    try:
+        print(validar_humitat(text))
+    except ValueError as error:
+        print(error)
 
 # Exercici 3 - Intermedi. Fitxer absent i finalització
 # Dins de TemporaryDirectory crea només una ruta a 'absent.txt' amb Path.
@@ -32,6 +56,9 @@ entrades_humitat = ["0", "100", "45.5", "-1", "101", "nan", "inf", "error"]
 # Sortida esperada: T1=21.5 / Intent acabat.
 # Mantén tots els fitxers dins de la carpeta temporal.
 # TODO: importa Path i TemporaryDirectory i prova els dos camins.
+# from pathlib import Path
+# from tempfile import TemporaryDirectory
+
 
 # Exercici 4 - Repte opcional. Filtrar lectures de temperatura
 # Defineix filtrar_temperatures(textos) que retorni (valides, rebutjades).

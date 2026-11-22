@@ -59,6 +59,20 @@ for text in entrades_humitat:
 # from pathlib import Path
 # from tempfile import TemporaryDirectory
 
+with TemporaryDirectory() as carpeta:
+    ruta = Path(carpeta) / "absents.txt"
+
+    # ruta.write_text("T1=21.5", encoding="utf-8")
+
+    try:
+        with open(ruta, encoding="utf-8") as fitxer:
+            contingut = fitxer.read()
+    except FileNotFoundError:
+        print("Fitxer absent")
+    else:
+        print(contingut)
+    finally:
+        print("Intent acabat")
 
 # Exercici 4 - Repte opcional. Filtrar lectures de temperatura
 # Defineix filtrar_temperatures(textos) que retorni (valides, rebutjades).
@@ -69,3 +83,28 @@ for text in entrades_humitat:
 # Amb [] ha de retornar ([], 0). Amb ['nan', 'inf'] ha de retornar ([], 2).
 textos = ["-40", "21.5", "85", "86", "avaria", "nan"]
 # TODO: captura ValueError per cada lectura i continua amb les següents.
+# import math
+
+def validar_temperatura(text):
+    temperatura = float (text)
+    if not math.isfinite(temperatura):
+        raise ValueError("La temperatura ha de ser finita.")
+    if temperatura < -40 or 85 < temperatura:
+        raise ValueError("Temperatura ha de ser en interval [-40, 85]")
+    return temperatura
+    
+def filtrar_temperatures(textos):
+    valides = []
+    rebutjades = 0
+    for temp in textos:
+        try:
+            temperatura = validar_temperatura(temp)
+        except ValueError:
+            rebutjades += 1
+        else:
+            valides.append(temperatura)
+    return valides, rebutjades
+
+print(filtrar_temperatures(textos))
+print(filtrar_temperatures([]))
+print(filtrar_temperatures(["nan", "inf"]))

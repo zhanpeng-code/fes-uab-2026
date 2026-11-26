@@ -4,6 +4,9 @@
 # Fes les proves dins de TemporaryDirectory per conservar les dades existents.
 ###
 
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
 # Exercici 1 - Bàsic - Desar un missatge
 # Implementa desar_missatge(ruta, missatge) i llegir_missatge(ruta).
 # Escriu tot el missatge amb mode w i recupera'l amb read().
@@ -11,6 +14,13 @@
 # llegir_missatge ha de retornar el mateix text amb el salt final.
 # Cas límit, el missatge "" es recupera com "".
 missatge_inicial = "Sensor de tensió actiu\n"
+def desar_missatge(ruta, missatge):
+    with open(ruta, "w", encoding="utf-8") as fitxer:
+        fitxer.write(missatge)
+
+def llegir_missatge(ruta):
+    with open(ruta, "r", encoding="utf-8") as fitxer:
+        return fitxer.read()
 
 # Exercici 2 - Bàsic - Comptar lectures
 # Implementa comptar_lectures(ruta). Compta les línies que no queden buides
@@ -18,6 +28,13 @@ missatge_inicial = "Sensor de tensió actiu\n"
 # Contingut inicial, "20.0\n\n21.5\n   \n". Resultat esperat, 2.
 # Un fitxer buit ha de donar 0. Si falta, propaga FileNotFoundError.
 contingut_registre = "20.0\n\n21.5\n   \n"
+def comptar_lectures(ruta):
+    comp = 0
+    with open(ruta, "r", encoding="utf-8") as fitxer:
+        for linia in fitxer:
+            if linia.strip() == "":
+                comp += 1
+    return comp
 
 # Exercici 3 - Intermedi - Recuperar valors vàlids
 # Implementa llegir_valides(ruta). Converteix cada línia no buida amb float.
@@ -26,6 +43,16 @@ contingut_registre = "20.0\n\n21.5\n   \n"
 # Entrada, "20.0\nerror\n\n22.0\n". Sortida, [20.0, 22.0].
 # Cas límit, totes les línies invàlides o buides han de retornar [].
 contingut_amb_error = "20.0\nerror\n\n22.0\n"
+def llegir_valides(ruta):
+    lectures = []
+    with open(ruta, "r", encoding="utf-8") as fitxer:
+        for linia in fitxer:
+            linia = linia.strip()
+            try:
+                lectures.append(float(linia))
+            except ValueError:
+                continue
+    return lectures
 
 # Exercici 4 - Repte opcional - Registre acumulatiu
 # Implementa afegir_esdeveniment(ruta, missatge) amb mode a.
@@ -35,6 +62,9 @@ contingut_amb_error = "20.0\nerror\n\n22.0\n"
 # la lectura completa ha de donar "Inici\nAturada\n".
 # Repetir "Inici" ha d'afegir una tercera línia, conservant les dues anteriors.
 esdeveniments = ["Inici", "Aturada"]
+def afegir_esdeveniment(ruta, missatge):
+    with open(ruta, "a", encoding="utf-8") as fitxer:
+        fitxer.write(missatge + "\n")
 
 # Exercici 5 - Intermedi - Filtrar temperatures
 # Implementa filtrar_temperatures(ruta_origen, ruta_desti, llindar).
@@ -45,6 +75,16 @@ esdeveniments = ["Inici", "Aturada"]
 # Si cap temperatura supera el llindar, el fitxer de destí ha d'existir buit.
 temperatures_per_filtrar = "18.5\n25.7\n27.3\n20.5\n"
 llindar_temperatures = 25.0
+def filtrar_temperatures(ruta_origen, ruta_desti, llindar):
+    temp = llegir_valides(ruta_origen)
+    temp_amb_llindar = [
+        temperatura for temperatura in temp
+        if temperatura >=llindar
+    ]
+    with open(ruta_desti, "w", encoding="utf-8") as fitxer:
+        for temperatura in temp_amb_llindar:
+            fitxer.write(f"{temperatura:.1f}\n")
+    return temp_amb_llindar
 
 # Exercici 6 - Intermedi - Crear un resum d'un fitxer
 # Implementa crear_resum(ruta_origen, ruta_resum).
@@ -53,3 +93,15 @@ llindar_temperatures = 25.0
 # Entrada, "18.5\n25.7\n27.3\n20.5\n". Arrodoneix la mitjana a un decimal.
 # El fitxer buit ha de produir només:
 # "Nombre de lectures: 0\nNo hi ha dades per resumir.\n"
+def crear_resum(ruta_origen, ruta_resum):
+    temperatures = llegir_valides(ruta_origen)
+    with open(ruta_resum, "w", encoding="utf-8") as fitxer:
+        fitxer.write(f"Nombre de lectures: {len(temperatures)}\n")
+        if temperatures == "":
+            fitxer.write("No hi ha dades per resumir.\n")
+            return
+    
+        mitjana = sum(temperatures) / len(temperatures)
+        fitxer.write(f"Mínima: {min(temperatures):.1f} °C\n")
+        fitxer.write(f"Màxima: {max(temperatures):.1f} °C\n")
+        fitxer.write(f"Mitjana: {mitjana:.1f} °C\n")
